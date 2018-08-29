@@ -5,6 +5,38 @@
 #include <fcntl.h>
 #include <stdlib.h>
 
+// Key mapping {{{1
+unsigned int key_map(unsigned int code) {
+    switch (code) {
+        case KEY_BRIGHTNESSDOWN:    // my magical escape button
+            exit(0);
+
+        case KEY_J:
+            return KEY_LEFT;
+        case KEY_K:
+            return KEY_DOWN;
+        case KEY_L:
+            return KEY_RIGHT;
+        case KEY_I:
+            return KEY_UP;
+
+        case KEY_U:
+            return KEY_HOME;
+        case KEY_O:
+            return KEY_END;
+
+        case KEY_H:
+            return KEY_PAGEUP;
+        case KEY_N:
+            return KEY_PAGEDOWN;
+
+        case KEY_B:
+            return KEY_SPACE;
+    }
+    return 0;
+}
+
+
 // Global device handles {{{1
 struct libevdev *idev;
 struct libevdev_uinput *odev;
@@ -73,37 +105,6 @@ static int read_one_key(struct input_event *ev) {
     if (ev->type != EV_KEY)
         return -1;
 
-    return 0;
-}
-
-// Key mapping {{{1
-unsigned int key_map(unsigned int code) {
-    switch (code) {
-        case KEY_BRIGHTNESSDOWN:    // my magical escape button
-            exit(0);
-
-        case KEY_J:
-            return KEY_LEFT;
-        case KEY_K:
-            return KEY_DOWN;
-        case KEY_L:
-            return KEY_RIGHT;
-        case KEY_I:
-            return KEY_UP;
-
-        case KEY_U:
-            return KEY_HOME;
-        case KEY_O:
-            return KEY_END;
-
-        case KEY_H:
-            return KEY_PAGEUP;
-        case KEY_N:
-            return KEY_PAGEDOWN;
-
-        case KEY_B:
-            return KEY_SPACE;
-    }
     return 0;
 }
 
