@@ -1,3 +1,9 @@
+/*
+ * spacefn-evdev.c
+ * James Laird-Wah (abrasive) 2018
+ * This code is in the public domain.
+ */
+
 #include <libevdev/libevdev.h>
 #include <libevdev/libevdev-uinput.h>
 #include <stdio.h>
