@@ -105,7 +105,7 @@ static int read_one_key(struct input_event *ev) {
     int err = libevdev_next_event(idev, LIBEVDEV_READ_FLAG_NORMAL | LIBEVDEV_READ_FLAG_BLOCKING, ev);
     if (err) {
         fprintf(stderr, "Failed: (%d) %s\n", -err, strerror(err));
-        return err;
+        exit(1);
     }
 
     if (ev->type != EV_KEY)
