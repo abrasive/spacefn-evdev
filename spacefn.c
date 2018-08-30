@@ -181,6 +181,12 @@ static void state_decide(void) {    // {{{2
     }
 
     printf("timed out\n");
+    for (int i=0; i<n_buffer; i++) {
+        unsigned int code = key_map(buffer[i]);
+        if (!code)
+            code = buffer[i];
+        send_key(code, V_PRESS);
+    }
     state = SHIFT;
 }
 
