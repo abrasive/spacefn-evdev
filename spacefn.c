@@ -42,6 +42,22 @@ unsigned int key_map(unsigned int code) {
     return 0;
 }
 
+// Blacklist keys for which I have a mapping, to try and train myself out of using them
+int blacklist(unsigned int code) {
+    switch (code) {
+        case KEY_UP:
+        case KEY_DOWN:
+        case KEY_RIGHT:
+        case KEY_LEFT:
+        case KEY_HOME:
+        case KEY_END:
+        case KEY_PAGEUP:
+        case KEY_PAGEDOWN:
+            return 1;
+    }
+    return 0;
+}
+
 
 // Global device handles {{{1
 struct libevdev *idev;
@@ -109,6 +125,9 @@ static int read_one_key(struct input_event *ev) {
     }
 
     if (ev->type != EV_KEY)
+        return -1;
+
+    if (blacklist(ev->code))
         return -1;
 
     return 0;
