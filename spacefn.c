@@ -26,15 +26,14 @@ unsigned int key_map(unsigned int code) {
         case KEY_SEMICOLON:
             return KEY_RIGHT;
 
-        case KEY_U:
+        case KEY_M:
             return KEY_HOME;
-        case KEY_O:
-            return KEY_END;
-
-        case KEY_H:
-            return KEY_PAGEUP;
-        case KEY_N:
+        case KEY_COMMA:
             return KEY_PAGEDOWN;
+        case KEY_DOT:
+            return KEY_PAGEUP;
+        case KEY_SLASH:
+            return KEY_END;
 
         case KEY_B:
             return KEY_SPACE;
