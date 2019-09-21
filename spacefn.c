@@ -166,7 +166,7 @@ static void state_decide(void) {    // {{{2
 
     while (timeout.tv_usec >= 0) {
         FD_SET(fd, &set);
-        int nfds = select(fd+1, &set, NULL, &set, &timeout);
+        int nfds = select(fd+1, &set, NULL, NULL, &timeout);
         if (!nfds)
             break;
 
