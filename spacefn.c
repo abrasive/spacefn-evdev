@@ -123,8 +123,10 @@ static int read_one_key(struct input_event *ev) {
         exit(1);
     }
 
-    if (ev->type != EV_KEY)
+    if (ev->type != EV_KEY) {
+        libevdev_uinput_write_event(odev, ev->type, ev->code, ev->value);
         return -1;
+    }
 
     if (blacklist(ev->code))
         return -1;
